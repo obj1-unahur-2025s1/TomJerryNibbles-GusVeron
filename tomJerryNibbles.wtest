@@ -1,17 +1,63 @@
 import tomJerryNibbles.*
 
-describe "Grupo de test" {
+describe "Historia Tom, Jerry y Nibbles." {
+  // Parte 1 Casos de prueba.
+  test "Enegia y Velocidad maxima de Tom." {
+    assert.equals(50, tom.energia())
+    assert.equals(10, tom.velocidadMaxima())
+  }
+  
+  test "Tom se come a Jerry" {
+    tom.comer(jerry)
 
-  test "test 1" {
-    assert.equals(100, 50+50)
+    assert.equals(102, tom.energia())
+    assert.equals(15.2, tom.velocidadMaxima())
   }
 
-  test "test 3" {
-    assert.that(true)
+  test "Tom corre 24 metros." {
+    tom.comer(jerry)
+    tom.correr(24)
+
+    assert.equals(90, tom.energia())
+    assert.equals(14, tom.velocidadMaxima())
   }
 
-  test "test 4" {
-    assert.notThat(false)
+  test "Tom se come a Nibbles." {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+
+    assert.equals(137, tom.energia())
+    assert.equals(18.7, tom.velocidadMaxima())
   }
 
+  test "Jerry cumple años y Tom se lo vuelve a comer." {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    jerry.cumplirAnios()
+    tom.comer(jerry)
+
+    assert.equals(209, tom.energia())
+    assert.equals(25.9, tom.velocidadMaxima())
+  }
+
+  test "Tom corre 38 metros." {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    jerry.cumplirAnios()
+    tom.comer(jerry)
+    tom.correr(38)
+
+    assert.equals(190, tom.energia())
+    assert.equals(24, tom.velocidadMaxima())
+  }
+  // Parte Final casos de prueba.
+  test "Tom se come a sparkles." {
+    tom.cazar(sparkles, 80)
+
+    assert.equals(102, tom.energia())
+    assert.equals(15.2, tom.velocidadMaxima())
+  }
 }
